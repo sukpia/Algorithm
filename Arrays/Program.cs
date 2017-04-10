@@ -30,12 +30,14 @@ namespace Arrays
             Console.WriteLine("3. Exit");
             string result = Console.ReadLine();
 
+            // Exam 20: Play Yatzy - a program to simulate where you throw 5 cubes until they show the same value
             if (result == "1")
             {
                 int[] beaker = new int[5];
                 Yatzy(beaker);
                 return true;
             }
+            // Exam 21: Play Craps - a program that simulates a simple dice game called craps.
             else if (result == "2")
             {
                 Craps();

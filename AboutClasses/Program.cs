@@ -23,6 +23,7 @@ namespace AboutClasses
         }
     }
 
+    // Exam 22 - Classes
     public class Coin
     {
         private static Random rand = new Random();
