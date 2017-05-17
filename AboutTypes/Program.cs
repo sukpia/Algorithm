@@ -8,9 +8,11 @@ namespace AboutTypes
 {
     class Program
     {
+        static Random rand = new Random();
+
         static void Main(string[] args)
         {
-            Test5();
+            Test7();
             Console.ReadLine();
         }
 
@@ -83,6 +85,53 @@ namespace AboutTypes
                 y = z;
             }
             return y;
+        }
+
+        // In general, the simple types are unchecked. That is, they are not tested for overflow if a value is too large.
+        static void Test6()
+        {
+            // that results -557712591, which is not correct
+            //int a = 1234567;
+            //int b = 1234567;
+            //Console.WriteLine(a * b);
+
+            // This can be fixed by the following
+            // the program will stop with an error message
+            checked
+            {
+                int a = 1234567;
+                int b = 1234567;
+                Console.WriteLine(a * b);
+            }
+        }
+
+        // Value type can be null with the following syntax (by adding ?)
+        // operator ??, means the value is the expression after ?? if the value before is null
+        static void Test7()
+        {
+            int a = 0;
+            int? b = null;
+            Console.WriteLine("a = " + a);
+            Console.WriteLine("b = " + b);
+            b = 3;
+            Console.WriteLine("b = " + b);
+            int?[] t = new int?[5];
+            for (int i = 0; i < t.Length; i++) t[i] = Number();
+            Print(t);
+            for (int i = 0; i < t.Length; i++) t[i] = Number() ?? 0;
+            Print(t);
+        }
+
+        static void Print(int?[] t)
+        {
+            foreach (int? n in t) Console.Write("{0, -3}|", n);
+            Console.WriteLine();
+        }
+
+        static int? Number()
+        {
+            if (rand.Next(2) == 1) return rand.Next(1, 10);
+            return null;
         }
     }
 }

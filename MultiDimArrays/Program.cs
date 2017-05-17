@@ -10,7 +10,7 @@ namespace MultiDimArrays
     {
         static void Main(string[] args)
         {
-            Test5();
+            Test3();
             Console.ReadLine();
         }
 
